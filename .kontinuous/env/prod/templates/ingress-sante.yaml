@@ -1,0 +1,32 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  labels:
+    app.kubernetes.io/instance: prod-covid
+    app.kubernetes.io/name: covid
+    app.kubernetes.io/part-of: covid
+    app.kubernetes.io/version: "1"
+    owner: covid
+    team: covid
+  name: prod-covid-sante
+  namespace: covid
+spec:
+  rules:
+    - host: covid-19.sante.gouv.fr
+      http:
+        paths:
+          - backend:
+              service:
+                name: app
+                port:
+                  number: 3000
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - covid-19.sante.gouv.fr
+      secretName: covid-19-sante-gouv-fr-2022
