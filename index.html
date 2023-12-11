@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <script src="https://browser.sentry-cdn.com/5.15.5/bundle.min.js"></script>
-    <title>Erreur serveur</title>
+    <title>Service suspendu</title>
     <style>
       /*!
      * DSFR v1.10.0 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
@@ -261,6 +261,22 @@
         }
       }
     </style>
+
+    <!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://matomo.fabrique.social.gouv.fr/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '23']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
   </head>
 
   <body>
@@ -326,46 +342,5 @@ Pour signaler une défaillance ou une altération des caractéristiques, utilise
       </div>
     </main>
 
-    <script nonce="inline-sentry">
-      (function () {
-        var hostname = document.location.hostname;
-        var dsn =
-          "https://7b80ba66958845f4b44790ffc7191638@sentry.fabrique.social.gouv.fr/28";
-
-        var FABRIQUE_DOMAIN = ".fabrique.social.gouv.fr";
-        var DEV_FABRIQUE_DOMAIN = ".dev.fabrique.social.gouv.fr";
-
-        var environment =
-          //
-          // The `//*.dev.fabrique.social.gouv.fr` case
-          (hostname.indexOf(DEV_FABRIQUE_DOMAIN) > 0 && DEV_FABRIQUE_DOMAIN) ||
-          //
-          // The `//*.fabrique.social.gouv.fr` case
-          (hostname.indexOf(FABRIQUE_DOMAIN) > 0 && FABRIQUE_DOMAIN) ||
-          //
-          // The `//fabrique.social.gouv.fr` case
-          (hostname === FABRIQUE_DOMAIN.slice(1) && FABRIQUE_DOMAIN) ||
-          //
-          // Other domains
-          hostname;
-
-        Sentry.init({
-          dsn: dsn,
-          environment: environment,
-        });
-
-        if (environment === FABRIQUE_DOMAIN) {
-          var project =
-            // The `//fabrique.social.gouv.fr` case
-            (hostname === FABRIQUE_DOMAIN.slice(1) && "www") ||
-            //
-            // The `//<project>.fabrique.social.gouv.fr` case
-            hostname.slice(0, hostname.indexOf(FABRIQUE_DOMAIN));
-          Sentry.setTag("project", project);
-        }
-
-        Sentry.captureException(new Error(hostname));
-      })();
-    </script>
   </body>
 </html>
