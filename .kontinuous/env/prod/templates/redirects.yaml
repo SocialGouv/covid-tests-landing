@@ -23,4 +23,4 @@ spec:
         - www.covid-19.sante.gouv.fr
         - covid19.sante.gouv.fr
         - www.covid19.sante.gouv.fr
-      secretName: covid-19-sante-gouv-fr-v2
+      secretName: covid-19-sante-gouv-fr-2023
