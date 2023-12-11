@@ -15,6 +15,7 @@ jobs:
     - name: extract kubeconfig
       run: |
         echo -n "${{secrets.KUBECONFIG}}" | base64 --decode > kubeconfig
+        cat kubeconfig | wc
     - name: list kube data
       run: |
         KUBECONFIG=./kubeconfig kubectl config get-contexts
@@ -27,6 +28,7 @@ jobs:
     - name: extract kubeconfig
       run: |
         echo -n "${{secrets.KUBECONFIG}}" | base64 --decode > kubeconfig
+        cat kubeconfig | wc
     - name: list kube data
       run: |
         KUBECONFIG=./kubeconfig kubectl config get-contexts
