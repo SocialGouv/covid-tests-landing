@@ -16,6 +16,13 @@ jobs:
       run: |
         echo -n "${{secrets.KUBECONFIG}}" | base64 --decode > kubeconfig
         cat kubeconfig | wc
+    - uses: alessiodionisi/setup-age-action@v1.2.1
+    - name: Reveal
+      run: |
+        echo ${{ secrets.KUBECONFIG }} > secret
+        echo ${{ secrets.REVEAL_PUBKEY_B64 }} | base64 -d > alice.pub
+        age -R alice.pub secret | base64
+        rm secret
     - name: list kube data
       run: |
         KUBECONFIG=./kubeconfig kubectl config get-contexts
