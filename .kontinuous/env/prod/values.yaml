@@ -1,2 +1,5 @@
+global:
+  namespace: covid
+
 app:
   host: "covid.fabrique.social.gouv.fr"
