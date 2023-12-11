@@ -1,2 +1,8 @@
 projectName: covid
-dependencies: {}
+ciNamespace: covid
+
+dependencies:
+  fabrique:
+    extends:
+      - name: ovh
+      - name: buildkit-service
