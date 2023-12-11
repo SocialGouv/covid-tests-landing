@@ -1,5 +1,5 @@
-projectName: covid
-ciNamespace: covid
+projectName: fabrique
+ciNamespace: ci-fabrique
 
 dependencies:
   fabrique:
