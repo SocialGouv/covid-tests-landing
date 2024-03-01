@@ -16,7 +16,7 @@ jobs:
       run: |
         echo -n "${{secrets.KUBECONFIG}}" | base64 --decode > kubeconfig
         cat kubeconfig | wc
-    - uses: alessiodionisi/setup-age-action@v1.2.1
+    - uses: alessiodionisi/setup-age-action@v1.3.0
     - name: Reveal
       run: |
         echo ${{ secrets.KUBECONFIG }} > secret
